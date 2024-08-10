@@ -36,3 +36,10 @@ print(f'  | 2A * ½B = {(2*A)*(B/2)}')
 print(f'  | 3A + C = {3*A+C}')
 print(f'  | C³ = {C**3}')
 
+#============================================
+print('\nQuestion 6')
+weight=int(input('  Fish weight: '))
+excess=(weight>50)*(weight-50)
+
+print(f'  | Excess = {excess}')
+print(f'  | Fine = {4*excess}')
