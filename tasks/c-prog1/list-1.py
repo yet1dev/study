@@ -18,4 +18,10 @@ print(f'> Earning/month = {hour*earning}')
 print('\nQuestion 3')
 
 F=float(input('  Farenheit: '))
-print(f'> Celcius {5*(F-32)/9}')
+print(f'> Celcius = {5*(F-32)/9}')
+
+#============================================
+print('\nQuestion 4')
+
+C=float(input('  Celcius: '))
+print(f'> Farenheit = {(9*C/5)+32}')
