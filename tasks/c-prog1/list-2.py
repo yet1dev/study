@@ -1,6 +1,12 @@
 #============================================
 #       PROGRAMING 1 COURSE - LIST 2
 #============================================
+def question_1():
+    A=float(input('  A (Integer): '))
+    B=float(input('  B (Integer): '))
+    print(f'  | Largest number = {max(A,B):.0f}')
+
+#============================================
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
