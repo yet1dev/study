@@ -79,4 +79,15 @@ print(f'  |d| Net pay = R$ {gloss*0.76:.2f}')
 print(f'  |e| Income tax = R$ {gloss*0.11:.2f}')
 
 #============================================
+print('\nQuestion 9')
+
+pay=float(input('  Salary: '))
+incr=( (pay<=280)+(pay<=700)+(pay<=1500)+1 )*0.05
+
+print(f'  |a| Salary = R$ {pay:.2f}')
+print(f'  |b| Incriase = {incr*100:.0f}%')
+print(f'  |c| Incriase Value = R$ {pay*incr:.2f}')
+print(f'  |d| Total salary = R$ {pay+pay*incr:.2f}')
+
+#============================================
 
