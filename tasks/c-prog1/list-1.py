@@ -65,5 +65,18 @@ print(f'  |a| Cans = {c:.0f} cans for R$ {cp:.2f}')
 print(f'  |b| Gallons = {g:.0f} gallons for R$ {gp:.2f}')
 print(f'  |c| Cheapest = {mc:.0f} cans and {mg:.0f} gallons for R$ {mp:.2f}')
 
+#============================================
+print('\nQuestion 8')
 
+earning=float(input('  Earning/hour: '))
+hour=int(input('  Hours/month: '))
+gloss=hour*earning
+
+print(f'  |a| Gloss pay = R$ {gloss:.2f}')
+print(f'  |b| INSS tax = R$ {gloss*0.08:.2f}')
+print(f'  |c| Union fee = R$ {gloss*0.05:.2f}')
+print(f'  |d| Net pay = R$ {gloss*0.76:.2f}')
+print(f'  |e| Income tax = R$ {gloss*0.11:.2f}')
+
+#============================================
 
