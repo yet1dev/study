@@ -24,6 +24,11 @@ def question_4():
     print(f'  | {["Invalid",OUT][len(year)==4]} Year')
 
 #============================================
+def question_5():
+    char=input('  Put a char: ')
+    print('  | Is a ' + [ 'consoant','vowel' ][char in 'AEIOUaeiou'] )
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
