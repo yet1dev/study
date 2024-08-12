@@ -12,6 +12,12 @@ def question_2():
     print(f'  | A is {[ "Negative","Positive","Neutral" ][(A>=0)+(A==0)]}')
 
 #============================================
+def question_3():
+    C=input('  Sex: ')
+    OUT=[ 'Invalid','Masculine','Feminine' ][ (C=='M') + (C=='F')*2 ]
+    print(f'  | This is a {OUT} sex')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
