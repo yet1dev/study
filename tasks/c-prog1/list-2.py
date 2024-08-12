@@ -9,7 +9,7 @@ def question_1():
 #============================================
 def question_2():
     A=int(input('  A (Integer): '))
-    print(f'  | A is {[ "Negative","Positive","Neutral" ][(A>=0)+(A==0)]}')
+    print('  | A is ' + [ "Negative","Positive","Neutral" ][ (A>=0)+(A==0) ])
 
 #============================================
 def question_3():
@@ -21,12 +21,20 @@ def question_3():
 def question_4():
     year=input('  Year: ')
     OUT=[ 'Not is a leap','Is a leap' ][int(year)%4==0]
-    print(f'  | {["Invalid",OUT][len(year)==4]} Year')
+    print('  | ' + ["Invalid",OUT][len(year)==4] + ' Year')
 
 #============================================
 def question_5():
     char=input('  Put a char: ')
     print('  | Is a ' + [ 'consoant','vowel' ][char in 'AEIOUaeiou'] )
+
+#============================================
+def question_6():
+    A=int(input('  A (Integer): '))
+    B=int(input('  B (Integer): '))
+    C=int(input('  C (Integer): '))
+
+    print('  | Descending List = ', list(reversed(sorted([A,B,C]))) )
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
