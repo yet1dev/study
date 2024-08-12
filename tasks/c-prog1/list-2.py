@@ -2,11 +2,14 @@
 #       PROGRAMING 1 COURSE - LIST 2
 #============================================
 def question_1():
-    A=float(input('  A (Integer): '))
-    B=float(input('  B (Integer): '))
+    A=int(input('  A (Integer): '))
+    B=int(input('  B (Integer): '))
     print(f'  | Largest number = {max(A,B):.0f}')
 
 #============================================
+def question_2():
+    A=int(input('  A (Integer): '))
+    print(f'  | A is {[ "Negative","Positive","Neutral" ][(A>=0)+(A==0)]}')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
