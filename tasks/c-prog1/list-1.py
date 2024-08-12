@@ -1,33 +1,33 @@
 #============================================
 #       PROGRAMING 1 COURSE - LIST 1
 #============================================
-print('\nQuestion 1')
+print('\nQuestion 1 - Circle Area')
 
 pi=3.14
 radius=float(input('  Radius: '))
 print(f'  | Circle Area = {pi*radius**2:.2f}')
 
 #============================================
-print('\nQuestion 2')
+print('\nQuestion 2 - Salary of Month')
 
 earning=float(input('  Earning/hour: '))
 hour=int(input('  Hours/month: '))
 print(f'  | Earning/month = R$ {hour*earning:.2f}')
 
 #============================================
-print('\nQuestion 3')
+print('\nQuestion 3 - Farenheit to Celcius')
 
 F=float(input('  Farenheit: '))
 print(f'  | Celcius = {5*(F-32)/9:.1f} C')
 
 #============================================
-print('\nQuestion 4')
+print('\nQuestion 4 - Celcius to Farenheit')
 
 C=float(input('  Celcius: '))
 print(f'  | Farenheit = {(9*C/5)+32:.1f} F')
 
 #============================================
-print('\nQuestion 5')
+print('\nQuestion 5 - Calculator')
 A=int(input('  A (Integer): '))
 B=int(input('  B (Integer): '))
 C=float(input('  C (Real): '))
@@ -37,7 +37,7 @@ print(f'  |b| 3A + C = {3*A+C:.2f}')
 print(f'  |c| C³ = {C**3:.2f}')
 
 #============================================
-print('\nQuestion 6')
+print('\nQuestion 6 - Fishery')
 weight=float(input('  Fish weight: '))
 excess=(weight>50)*(weight-50)
 
@@ -45,7 +45,7 @@ print(f'  | Excess = {excess:.1f} kg')
 print(f'  | Fine = R$ {4*excess:.2f}')
 
 #============================================
-print('\nQuestion 7')
+print('\nQuestion 7 - Cans and Gallons')
 
 area=float(input('  Paint area: '))
 
@@ -66,7 +66,7 @@ print(f'  |b| Gallons = {g:.0f} gallons for R$ {gp:.2f}')
 print(f'  |c| Cheapest = {mc:.0f} cans and {mg:.0f} gallons for R$ {mp:.2f}')
 
 #============================================
-print('\nQuestion 8')
+print('\nQuestion 8 - Salary Calculator')
 
 earning=float(input('  Earning/hour: '))
 hour=int(input('  Hours/month: '))
@@ -79,7 +79,7 @@ print(f'  |d| Net pay = R$ {gloss*0.76:.2f}')
 print(f'  |e| Income tax = R$ {gloss*0.11:.2f}')
 
 #============================================
-print('\nQuestion 9')
+print('\nQuestion 9 - Salary Incriase')
 
 pay=float(input('  Salary: '))
 incr=( (pay<=280)+(pay<=700)+(pay<=1500)+1 )*0.05
@@ -90,4 +90,17 @@ print(f'  |c| Incriase Value = R$ {pay*incr:.2f}')
 print(f'  |d| Total salary = R$ {pay+pay*incr:.2f}')
 
 #============================================
+print('\nQuestion 10 - Triangle Test')
 
+A,B,C= sorted([
+    float(input('  Edge A: ')),
+    float(input('  Edge B: ')),
+    float(input('  Edge C: '))
+])
+
+triangle = (A!=B!=C) * 'Is a Scalene Triangle'
+triangle = (A==B==C) * 'Is a Equilateral Triangle'
+triangle = ((A==B) ^ (B==C)) * 'Is a Isosceles Triangle'
+triangle = (A+B>C) * triangle + (A+B<=C) * 'Not is a Triangle'
+
+print(f'  | {triangle}')
