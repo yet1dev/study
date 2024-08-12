@@ -18,6 +18,12 @@ def question_3():
     print(f'  | This is a {OUT} sex')
 
 #============================================
+def question_4():
+    year=input('  Year: ')
+    OUT=[ 'Not is a leap','Is a leap' ][int(year)%4==0]
+    print(f'  | {["Invalid",OUT][len(year)==4]} Year')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
