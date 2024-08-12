@@ -37,6 +37,15 @@ def question_6():
     print('  | Descending List = ', list(reversed(sorted([A,B,C]))) )
 
 #============================================
+def question_7():
+    T1=float(input('  Test 1: '))
+    T2=float(input('  Test 2: '))
+    med = (T1+T2)/2
+    VAL = [ 'rejected','approved' ][med>=7] + (med==10)*' with distinction'
+
+    print(f'  | Median = {med:.2f}, You are {VAL}')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
