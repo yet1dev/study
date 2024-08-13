@@ -51,7 +51,15 @@ def question_8():
     B=int(input('  B (Integer): '))
     C=int(input('  C (Integer): '))
     print(f'  | Largest = {max(A,B,C)}')
-    
+
+#============================================
+def question_9():
+    A=int(input('  A (Integer): '))
+    B=int(input('  B (Integer): '))
+    C=int(input('  C (Integer): '))
+    print(f'  | Smallest = {min(A,B,C)}')
+    print(f'  | Largest = {max(A,B,C)}')
+
 #============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
