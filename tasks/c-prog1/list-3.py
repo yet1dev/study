@@ -60,6 +60,15 @@ def question_6():
     print()
 
 #============================================
+def question_7():
+    n = int(input('  Number 1 to 10: '))
+    print(f'  | FOR Multiplication Table of {n}: ')
+    for x in range(1,11): print(f'    | {n} x {x} = {n*x}')
+    
+    print(f'\n  | WHILE Multiplication Table of {n}: '); x=0
+    while x<11: print(f'    | {n} x {x} = {n*x}'); x+=1
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
