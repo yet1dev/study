@@ -80,6 +80,16 @@ def question_11():
     print(f'  | {(i!=0)*"Good"} {shift[i]}')
 
 #============================================
+def question_12():
+    pay=float(input('  Salary: '))
+    incr=( (pay<=280)+(pay<=700)+(pay<=1500)+1 )*0.05
+
+    print(f'  |a| Salary = R$ {pay:.2f}')
+    print(f'  |b| Incriase = {incr*100:.0f}%')
+    print(f'  |c| Incriase Value = R$ {pay*incr:.2f}')
+    print(f'  |d| Total salary = R$ {pay+pay*incr:.2f}')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
