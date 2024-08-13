@@ -36,6 +36,21 @@ def question_4():
     print(f'  | Country B have {B:.0f} peoples')
 
 #============================================
+def question_5():
+    N = 0
+    A = int(input('  Population of Country A: '))
+    B = int(input('  Population of Country B: '))
+    IA = float(input('  Incriase rate % of Country A: '))
+    IB = float(input('  Incriase rate % of Country B: '))
+    IA, IB = IA/100 + 1, IB/100 + 1
+
+    while (A<B): A,B,N = IA*A, IB*B, N+1
+
+    print(f'  | In {N} years')
+    print(f'  | Country A have {A:.0f} peoples')
+    print(f'  | Country B have {B:.0f} peoples')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
