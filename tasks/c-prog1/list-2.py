@@ -46,6 +46,13 @@ def question_7():
     print(f'  | Median = {med:.2f}, You are {VAL}')
 
 #============================================
+def question_8():
+    A=int(input('  A (Integer): '))
+    B=int(input('  B (Integer): '))
+    C=int(input('  C (Integer): '))
+    print(f'  | Largest = {max(A,B,C)}')
+    
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
