@@ -12,8 +12,19 @@ def question_2():
     while True:
         name=input('  Name: ')
         secret=input('  Password: ')
-        if (name != secret): break         
+        if (name != secret): break
         print('  | Password cant be your name\n')
+
+#============================================
+def question_3():
+    name,age,pay,sex,state = 'k',-1,0,'k','k'
+    
+    while len(name)<=3:        name=input('  Name: ')
+    while not (0<=age<=150):   age=int(input('  Age: '))
+    while pay<=0:              pay=float(input('  Salary: '))
+    while not sex in 'mf':     sex=input('  Sex: ') 
+    while not state in 'smwd': state=input('  State: ') 
+    # STATE: single, married, widowed, divocied
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
