@@ -1,5 +1,5 @@
 #============================================
-#       PROGRAMING 1 COURSE - LIST 2
+#     PROGRAMING 1 COURSE - LIST 3 LOOPS
 #============================================
 def question_1():
     N=float(input('  Test Score: '))
@@ -25,6 +25,15 @@ def question_3():
     while not sex in 'mf':     sex=input('  Sex: ') 
     while not state in 'smwd': state=input('  State: ') 
     # STATE: single, married, widowed, divocied
+
+#============================================
+def question_4():
+    N,A,B = 0, 80_000, 200_000
+    while (A<B): A,B,N = 1.03*A, 1.015*B, N+1
+
+    print(f'  | In {N} years')
+    print(f'  | Country A have {A:.0f} peoples')
+    print(f'  | Country B have {B:.0f} peoples')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
