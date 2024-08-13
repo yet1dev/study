@@ -51,6 +51,15 @@ def question_5():
     print(f'  | Country B have {B:.0f} peoples')
 
 #============================================
+def question_6():
+    print('  for:', end='')
+    for x in range(1,50,2): print(f' {x}', end='')
+
+    print('\n  while:', end=''); x=1
+    while x<50: print(f' {x}', end=''); x+=2
+    print()
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
