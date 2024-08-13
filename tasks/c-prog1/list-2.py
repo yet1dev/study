@@ -58,7 +58,6 @@ def question_9():
     B=int(input('  B (Integer): '))
     C=int(input('  C (Integer): '))
     print(f'  | Smallest = {min(A,B,C)}')
-    clear; yc log -s
     print(f'  | Largest = {max(A,B,C)}')
 
 #============================================
@@ -72,6 +71,13 @@ def question_10():
     if (min(A,B,C)==C): cheaper = 3
 
     print(f'  | Cheaper = {cheaper}° Product for R$ {min(A,B,C):.2f}')
+
+#============================================
+def question_11():
+    C=input('  Study shift: ')
+    i = (C=='M') + (C=='A')*2 + (C=='N')*3
+    shift = ['Invalid Value', 'Morning', 'Afternoon', 'Night']
+    print(f'  | {(i!=0)*"Good"} {shift[i]}')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
