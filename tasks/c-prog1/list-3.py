@@ -3,8 +3,17 @@
 #============================================
 def question_1():
     N=float(input('  Test Score: '))
-    while (N<0) | (N>10):
-        N=float(input('  Not score, try again: '))
+    while True:
+        if (0<=N<=10): break
+        N=float(input('  Not Score, try again: '))
+
+#============================================
+def question_2():
+    while True:
+        name=input('  Name: ')
+        secret=input('  Password: ')
+        if (name != secret): break         
+        print('  | Password cant be your name\n')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
