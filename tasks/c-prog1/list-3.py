@@ -1,6 +1,10 @@
 #============================================
 #       PROGRAMING 1 COURSE - LIST 2
 #============================================
+def question_1():
+    N=float(input('  Test Score: '))
+    while (N<0) | (N>10):
+        N=float(input('  Not score, try again: '))
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
@@ -20,3 +24,4 @@ while True:
         case 10: question_10()
         case 11: question_11()
         case 12: question_12()
+        case 13: question_13()
