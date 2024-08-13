@@ -58,7 +58,20 @@ def question_9():
     B=int(input('  B (Integer): '))
     C=int(input('  C (Integer): '))
     print(f'  | Smallest = {min(A,B,C)}')
+    clear; yc log -s
     print(f'  | Largest = {max(A,B,C)}')
+
+#============================================
+def question_10():
+    A=float(input('  1° Product Price: '))
+    B=float(input('  2° Product Price: '))
+    C=float(input('  3° Product Price: '))
+
+    if (min(A,B,C)==A): cheaper = 1
+    if (min(A,B,C)==B): cheaper = 2
+    if (min(A,B,C)==C): cheaper = 3
+
+    print(f'  | Cheaper = {cheaper}° Product for R$ {min(A,B,C):.2f}')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
