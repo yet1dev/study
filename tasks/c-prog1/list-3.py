@@ -69,6 +69,20 @@ def question_7():
     while x<11: print(f'    | {n} x {x} = {n*x}'); x+=1
 
 #============================================
+def question_8():
+    A = float(input('  A (Real): '))
+    B = int(input('  B (Integer): '))
+
+    N=A
+    for x in range(1,B): N*=N
+    print(f'  | FOR   {A:.2f} ** {B} = {N:.2f}')
+
+    N,x = A, 1
+    while x<B: N*=N; x+=1
+    print(f'  | WHILE {A:.2f} ** {B} = {N:.2f}')
+
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
