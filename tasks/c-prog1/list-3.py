@@ -111,6 +111,16 @@ def question_10():
     print('')
 
 #============================================
+def question_11():
+    r=1
+    n = int(input(f'  N-fat: '))
+    for x in range(1,n+1): r*=x
+    print(f'  | FOR = {r}'); r=1
+    
+    while n>1: r*=n; n-=1
+    print(f'  | WHILE = {r}')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
