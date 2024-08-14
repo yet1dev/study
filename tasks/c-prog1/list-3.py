@@ -121,6 +121,21 @@ def question_11():
     print(f'  | WHILE = {r}')
 
 #============================================
+def question_12():
+    N = int(input(f'  Prime test: '))
+
+    isprime=''
+    for x in range(2,N):
+        if N%x == 0: isprime='not ' 
+    print(f'  | FOR = A {isprime}is a prime')
+
+    isprime=''; x=N
+    while x>2:
+        x-=1
+        if N%x == 0: isprime='not '
+    print(f'  | WHILE = A {isprime}is a prime')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
