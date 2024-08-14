@@ -99,6 +99,18 @@ def question_9():
     print(f'  | WHILE Even Numbers = {even}')
 
 #============================================
+def question_10():
+    A,B = 1,1
+    n = int(input(f'  N-fib: '))
+
+    print('  | FOR =   1', end='')
+    for x in range(1,n): print(f' {B}', end=''); B+=A; A=B-A
+
+    print('\n  | WHILE = 1', end=''); A,B,x = 1,1,1
+    while x<n: x+=1; print(f' {B}', end=''); B+=A; A=B-A
+    print('')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
