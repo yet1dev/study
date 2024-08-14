@@ -136,6 +136,15 @@ def question_12():
     print(f'  | WHILE = A {isprime}is a prime')
 
 #============================================
+def question_13():
+    N = int(input(f'  Number of Scores: '))
+    total=0
+
+    for x in range(1,N+1):
+        total += float(input(f'  {x}° Test Score: '))
+    print(f'  | Median of Scores = {total/N:.2f}')
+
+#============================================
 #       INTERACTION WITH THE QUESTIONS
 #============================================
 while True:
