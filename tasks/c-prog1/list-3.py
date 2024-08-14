@@ -81,6 +81,22 @@ def question_8():
     while x<B: N*=N; x+=1
     print(f'  | WHILE {A:.2f} ** {B} = {N:.2f}')
 
+#============================================
+def question_9():
+    odd,even = 0,0
+    for x in range(1,11):
+        N=int(input(f'  {x}° Number: '))
+        odd+= (N%2==1); even+= (N%2==0)
+    print(f'  | FOR Odd Numbers = {odd}')
+    print(f'  | FOR Even Numbers = {even}\n')
+
+    odd,even,x = 0,0,0
+    while x<10:
+        x+=1
+        N=int(input(f'  {x}° Number: '))
+        odd+= (N%2==1); even+= (N%2==0)
+    print(f'  | WHILE Odd Numbers = {odd}')
+    print(f'  | WHILE Even Numbers = {even}')
 
 #============================================
 #       INTERACTION WITH THE QUESTIONS
