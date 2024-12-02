@@ -9,12 +9,20 @@ public class Main {
 		Runnable[] Question = new Runnable[10];
 //===========================================	
 		Question[1] = () -> {
-			double score = 11;			
+			double score = 11;
 			while ((score<0) | (score>10)){
 				score = my.read("  Score (0-10): ").Double();
 			};
 		};
 
+		Question[2] = () -> {
+			double A = 55000;
+			double B = 160000;
+			int qt = 0;
+
+			while (A < B){ qt+=1; A*=1.3; B*=1.18; };
+			my.print("  Months: " + qt + "\n");
+		};
 
 //===========================================
 //        BASIC LOOP SELECT QUESTION
