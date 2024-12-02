@@ -28,6 +28,15 @@ public class Main {
 			for (int x=1; x<=20; x++){ my.print("  "+x+"\n"); };
 		};
 
+		Question[4] = () -> {
+			int res = 0;
+			int n = my.read("  Number: ").Int();
+			
+			for (int x=1; x<=10; x++){
+				res+=n;
+				my.print("  "+n+"x"+x+" = "+res+"\n");
+			};
+		};
 //===========================================
 //        BASIC LOOP SELECT QUESTION
 //===========================================
