@@ -16,12 +16,16 @@ public class Main {
 		};
 
 		Question[2] = () -> {
+			int qt = 0;
 			double A = 55000;
 			double B = 160000;
-			int qt = 0;
 
 			while (A < B){ qt+=1; A*=1.3; B*=1.18; };
 			my.print("  Months: " + qt + "\n");
+		};
+
+		Question[3] = () -> {
+			for (int x=1; x<=20; x++){ my.print("  "+x+"\n"); };
 		};
 
 //===========================================
