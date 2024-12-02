@@ -8,7 +8,7 @@ public class Main {
 		int number; 
 		Runnable[] Question = new Runnable[10];
 //===========================================	
-		Question[1] = () -> {			
+		Question[1] = () -> {
 			// SOLUTION HERE
 		};
 
