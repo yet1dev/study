@@ -31,11 +31,16 @@ public class Main {
 		Question[4] = () -> {
 			int res = 0;
 			int n = my.read("  Number: ").Int();
-			
+	
 			for (int x=1; x<=10; x++){
 				res+=n;
 				my.print("  "+n+"x"+x+" = "+res+"\n");
 			};
+		};
+
+		Question[5] = () -> {
+			int res = ((1+499)/2)*(250); // arithmetic progression
+			my.print("  "+res+"\n");
 		};
 //===========================================
 //        BASIC LOOP SELECT QUESTION
