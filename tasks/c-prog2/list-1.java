@@ -8,8 +8,11 @@ public class Main {
 		int number; 
 		Runnable[] Question = new Runnable[10];
 //===========================================	
-		Question[1] = () -> {			
-			// SOLUTION HERE
+		Question[1] = () -> {
+			double score = 11;			
+			while ((score<0) | (score>10)){
+				score = my.read("  Score (0-10): ").Double();
+			};
 		};
 
 
@@ -17,7 +20,7 @@ public class Main {
 //        BASIC LOOP SELECT QUESTION
 //===========================================
 		while (true) {
-			number = my.read("Question Number: ").Int();
+			number = my.read("\nQuestion: ").Int();
 			if (number == 0) { break; } else { Question[number].run(); };
 		}
 	}
