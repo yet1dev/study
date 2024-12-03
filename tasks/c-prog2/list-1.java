@@ -11,7 +11,7 @@ public class Main {
 		Question[1] = () -> {
 			double score = 11;
 			while ((score<0) | (score>10)){
-				score = my.read("  Score (0-10): ").Double();
+				score = my.read("  Score (0-10): ").nextDouble();
 			};
 		};
 
@@ -21,32 +21,33 @@ public class Main {
 			double B = 160000;
 
 			while (A < B){ qt+=1; A*=1.3; B*=1.18; };
-			my.print("  Months: " + qt + "\n");
+			my.print("  Months: %d\n", qt);
 		};
 
 		Question[3] = () -> {
-			for (int x=1; x<=20; x++){ my.print("  "+x+"\n"); };
+			for (int x=1; x<=20; x++){ my.print("  %d\n", x); };
 		};
 
 		Question[4] = () -> {
-			int res = 0;
-			int n = my.read("  Number: ").Int();
+			int n = my.read("  Number: ").nextInt();
 	
 			for (int x=1; x<=10; x++){
-				res+=n;
-				my.print("  "+n+"x"+x+" = "+res+"\n");
+				my.print("  %d x %d = %d\n", n, x, n*x);
 			};
 		};
 
 		Question[5] = () -> {
-			int res = ((1+499)/2)*(250); // arithmetic progression
-			my.print("  "+res+"\n");
+			my.print("  %d\n", ((1+499)/2)*(250) ); // arithmetic progression
+		};
+		
+		Question[6] = () -> {
+
 		};
 //===========================================
 //        BASIC LOOP SELECT QUESTION
 //===========================================
 		while (true) {
-			number = my.read("\nQuestion: ").Int();
+			number = my.read("\nQuestion: ").nextInt();
 			if (number == 0) { break; } else { Question[number].run(); };
 		}
 	}
@@ -56,15 +57,7 @@ public class Main {
 //               MY FUNCTIONS
 //===========================================
 class my {
-	static String OUT;
-	static void print(String msg){ System.out.print(msg); }
-
-	static String Str() { return OUT; }
-
-	static int Int() { return Integer.parseInt(OUT); }
-	static double Double() { return Double.parseDouble(OUT); }
- 
-	static my out(String in){ OUT=in; return new my(); }
-	static my read(String msg) { print(msg); return out(new Scanner(System.in).nextLine()); }
+	static void print(String msg, Object... args){ System.out.printf(msg, args); }
+	static Scanner read(String msg) { print(msg); return new Scanner(System.in); }
 }
 

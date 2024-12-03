@@ -12,7 +12,6 @@ public class Main {
 			// SOLUTION HERE
 		};
 
-
 //===========================================
 //        BASIC LOOP SELECT QUESTION
 //===========================================
@@ -27,15 +26,6 @@ public class Main {
 //               MY FUNCTIONS
 //===========================================
 class my {
-	static String OUT;
-	static void print(String msg){ System.out.print(msg); }
-
-	static String Str() { return OUT; }
-
-	static int Int() { return Integer.parseInt(OUT); }
-	static double Double() { return Double.parseDouble(OUT); }
- 
-	static my out(String in){ OUT=in; return new my(); }
-	static my read(String msg) { print(msg); return out(new Scanner(System.in).nextLine()); }
+	static void print(String msg, Object... args){ System.out.printf(msg, args); }
+	static Scanner read(String msg) { print(msg); return new Scanner(System.in); }
 }
-
