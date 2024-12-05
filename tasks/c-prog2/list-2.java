@@ -26,6 +26,6 @@ public class Main {
 //               MY FUNCTIONS
 //===========================================
 class my {
-	static void print(String msg, Object... args){ System.out.printf(msg, args); }
-	static Scanner read(String msg) { print(msg); return new Scanner(System.in); }
+	static void print(String msg, Object... args) { System.out.printf(msg, args); }
+	static Scanner read(String msg, Object... args) { print(msg, args); return new Scanner(System.in); }
 }
