@@ -59,6 +59,22 @@ public class Main {
 			my.print("\n  Negative = %.0f (%.0f%%)\n", neg, neg/(neg+pos)*100);
 			my.print("  Positive = %.0f (%.0f%%)\n", pos, pos/(neg+pos)*100);
 		};
+		
+		Question[8] = () -> {
+			int num = 1;
+			int[] range = {0,0,0,0};
+			
+			while (num>0) {
+				num = my.read("  Non-Zero Number: ").nextInt();
+				if ((num>0) & (num<=100)) { range[(num-1)/25]+=1; };
+			};
+
+			my.print("\n");
+			for (int i=0; i<=3; i++){
+				my.print("  %d to %d = %d\n", (i*25)+1, (i+1)*25, range[i]); 
+			};
+		};
+
 //===========================================
 //        BASIC LOOP SELECT QUESTION
 //===========================================
