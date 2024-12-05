@@ -74,6 +74,18 @@ public class Main {
 				my.print("  %d to %d = %d\n", (i*25)+1, (i+1)*25, range[i]); 
 			};
 		};
+		
+		Question[9] = () -> {
+			int num=1, odd=0, even=0;
+
+			while (num>0) {
+				num = my.read("  Non-Zero Number: ").nextInt();
+				if (num%2==1) { odd+=1; } else { even+=1; };
+			};
+
+			my.print("\n Odd = %d", odd);
+			my.print("\n Even = %d\n", even-1);
+		};
 
 //===========================================
 //        BASIC LOOP SELECT QUESTION
