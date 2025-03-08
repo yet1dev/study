@@ -5,6 +5,20 @@ import java.util.*; // Set, Map, List, Arrays, HashSet, HashMap, Iterator, Array
 import java.lang.reflect.*;  // Field, Constructor
 import java.util.stream.*;   // Stream, Collectors
 import java.util.function.*; // Function, Consumer, Predicate, BinaryOperator
+//========================================================
+//             LSETMAP LEVEL 0 - BASE
+//========================================================
+public abstract class LSet0_Base<T> {
+	protected Set<T>                           src = new HashSet<>();
+	protected List<Set<T>>                     book = new ArrayList<>();
+	protected Map<String, Map<Object, Set<T>>> index = new HashMap<>();
+	protected Map<Object, Set<T>>              map = new HashMap<>();
+	protected Set<T>                           set = new HashSet<>();
+	protected Class<T>                         type;
+	protected Constructor<T>                   factory;
+
+	{ this.book.add(new HashSet<>()); }
+}
 
 //========================================================
 //            LBOX - BASE FOR INTERNAL ELEMENTS
