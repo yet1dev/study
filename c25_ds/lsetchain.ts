@@ -2,12 +2,10 @@
 //                   LOGICAL SET CHAIN
 //=============================================================
 export class Ride {       // EXEMPLE CLASS
-	private speed: string;
 	private color: string;
 	private name: string;
 
-	constructor(speed:string, color:string, name:string) {
-		this.speed = speed;
+	constructor(color:string, name:string) {
 		this.color = color;
 		this.name = name;
 	}
@@ -96,11 +94,11 @@ abstract class LSet1_Support<T> extends LSet0_Base<T> {
 		let X = uaib, U=this.list, A=this.chain, B=this.load(prop,val); 
 		let R = (X==15) ? U : (X==6) ? A : (X==3) ? B : new Set();      // O(1)
 
-		if (!uaib in [0, 15, 6, 3]) {  // O(n): Not try a simple selection 
+		if (![0, 15, 6, 3].includes(uaib)) {  // O(n): Not try a simple selection
 			if (1 & uaib>>3) { U.forEach(x => !B.has(x) && !A.has(x) && R.add(x) ); } // add U
-			if (1 & uaib>>2) { A.forEach(x => !B.has(x) &&  R.add(x) ); } // add A
-			if (1 & uaib>>1) { A.forEach(x =>  B.has(x) &&  R.add(x) ); } // add I
-			if (1 & uaib>>0) { B.forEach(x => !A.has(x) &&  R.add(x) ); } // add A
+			if (1 & uaib>>2) { A.forEach(x =>              !B.has(x) && R.add(x) ); } // add A
+			if (1 & uaib>>1) { A.forEach(x =>               B.has(x) && R.add(x) ); } // add I
+			if (1 & uaib>>0) { B.forEach(x =>              !A.has(x) && R.add(x) ); } // add B
 		}
 		return R;
 	}
