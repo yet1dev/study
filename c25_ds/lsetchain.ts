@@ -105,4 +105,31 @@ abstract class LSet1_Support<T> extends LSet0_Base<T> {
 		return R;
 	}
 }
+//==============================================================
+//                      LSET2 UTILS 
+//==============================================================
+abstract class LSet2_Utils<T> extends LSet1_Support<T> {
+// GETTERS
+	public res(): any    { return this.result; }
+	public all(): Set<T> { return this.list; }
+	public cur(): Set<T> { return this.chain; }
+
+// UTILITY
+	public map(lambda:any): LSetChain<T> {
+		this.result = [...this.result].map(lambda);
+		return this.struct();
+	}
+	public filter(lambda:any): LSetChain<T> {
+		this.result = [...this.result].filter(lambda);
+		return this.struct();
+	}
+	public forEach(lambda:any): LSetChain<T> {
+		this.result = [...this.result].forEach(lambda);
+		return this.struct();
+	}
+	public reduce(start:T, lambda:any): LSetChain<T> {
+		this.result = [...this.result].reduce(start, lambda);
+		return this.struct();
+	}
+}
 	}
