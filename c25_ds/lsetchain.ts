@@ -79,4 +79,30 @@ abstract class LSet1_Support<T> extends LSet0_Base<T> {
 		lvl2.get(val).add(obj); // add object
 		return this.struct();
 	};
+
+	protected drop(obj:T, prop:string, val:any): LSetChain<T>{
+		let lvl1:any = this.index.get(prop) ?? new Map(); // Map
+		let lvl2:any = lvl1.get(val)        ?? new Set(); // Set
+
+		lvl2.delete(obj); // remove object from index
+
+		(lvl2.size === 0) && lvl1.delete(val);
+		(lvl1.size === 0) && this.index.delete(prop);
+
+		return this.struct();
+	}
+//==============================================================
+	protected pick(prop:string, val:any, uaib:number): Set<T> {
+		let X = uaib, U=this.list, A=this.chain, B=this.load(prop,val); 
+		let R = (X==15) ? U : (X==6) ? A : (X==3) ? B : new Set();      // O(1)
+
+		if (!uaib in [0, 15, 6, 3]) {  // O(n): Not try a simple selection 
+			if (1 & uaib>>3) { U.forEach(x => !B.has(x) && !A.has(x) && R.add(x) ); } // add U
+			if (1 & uaib>>2) { A.forEach(x => !B.has(x) &&  R.add(x) ); } // add A
+			if (1 & uaib>>1) { A.forEach(x =>  B.has(x) &&  R.add(x) ); } // add I
+			if (1 & uaib>>0) { B.forEach(x => !A.has(x) &&  R.add(x) ); } // add A
+		}
+		return R;
+	}
+}
 	}
