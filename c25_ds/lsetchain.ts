@@ -59,3 +59,24 @@ abstract class LSet0_Base<T> {
 		},
 	};
 }
+//==============================================================
+//                      LSET1 SUPPORT
+//==============================================================
+abstract class LSet1_Support<T> extends LSet0_Base<T> {
+	protected struct() { return this as unknown as LSetChain<T>;}
+	
+	protected load(prop:string, val:any): Set<T> {
+		return this.index.get(prop)?.get(val) ?? new Set<T>();
+	}
+
+	protected save(obj:T, prop:string, val:any): LSetChain<T>{
+		let lvl1:Map<any, any> = this.index;         // set lvl1
+		lvl1.get(prop) ?? lvl1.set(prop, new Map()); // create if undefined
+
+		let lvl2:Map<any, any> = lvl1.get(prop);     // set lvl2
+		lvl2.get(val)  ?? lvl2.set(val, new Set());  // create if undefined
+
+		lvl2.get(val).add(obj); // add object
+		return this.struct();
+	};
+	}
