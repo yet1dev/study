@@ -1,5 +1,7 @@
 # Logical Set Chain: Data Structure
 
+**LICENCE**: This sub-repo uses the same LICENCE of root (MIT)
+
 This project is a data structure to get sequential logical operations
 over a set of objects. This structure allow find a object with the
 value of a arbitrary property and filter with new searchs.
