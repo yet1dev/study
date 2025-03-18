@@ -167,3 +167,29 @@ abstract class LSet3_Complex<T> extends LSet2_Utils<T> {
 		return this.struct();
 	}
 }
+//==============================================================
+//                       FINAL LSETMAP
+//==============================================================
+export class LSetMap<T> extends LSet3_Complex<T> implements LSetChain<T> {
+	constructor(factory: new (...args: any[]) => T){
+		super();
+		this.factory = factory;
+	}
+
+	public add(...args: any[]): LSetChain<T> {
+		this.reg(new this.factory(...args));  // create/register new object
+		return this.struct();
+	}
+	public sel(prop:string, val:any, uaib:number = 0b0011): LSetChain<T> {
+		this.chain = this.pick(prop,val,uaib); // store filter selection
+		this.result = this.chain;              // store a ref to selection
+		return this.struct();                  // return this structure
+	}
+	public set(prop:string, val:any, uaib:number = 0b0110): LSetChain<T> {
+		for (let obj of this.pick(prop, null, uaib)){
+			obj[prop] = val;
+		}
+		return this.struct();
+	}
+}
+
