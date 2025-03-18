@@ -132,4 +132,38 @@ abstract class LSet2_Utils<T> extends LSet1_Support<T> {
 		return this.struct();
 	}
 }
+//==============================================================
+//                 LSET3 COMPLEX FUNCTIONS
+//==============================================================
+abstract class LSet3_Complex<T> extends LSet2_Utils<T> {
+	public reg(obj: T): LSetChain<T> {
+		let proxy = new Proxy(obj,this.handler);  // create proxy
+		this.list.add(proxy);                     // store proxy in repo
+
+    for (let prop in obj) {
+			this.save(proxy, prop, obj[prop]); // save proxy in index
+    }
+
+		(obj as any).repo = this;            // store repo ref of obj
+		(obj as any).toString = () => {      // change toString mensage
+			const { repo, ...others } = obj;   // disassembly object
+			return `${("repo" in obj) && "LSet"} ${obj.constructor.name} ${JSON.stringify(others)}`; 
+		}
+		(obj as any)[Symbol.for("Deno.customInspect")] = () => obj.toString();
+
+		return this.struct();
 	}
+	
+	public del(prop:string, val:any, uaib:number = 0b0011): LSetChain<T> {
+		for (let obj of this.pick(prop, val, uaib)) { // pick objects
+			this.list.delete(obj);                      // remove from list
+			this.chain.delete(obj);                     // remove from chain
+			for (let prop in obj) {
+				this.drop(obj,prop,obj[prop]);            // clear index
+			}
+		};
+
+		this.result = new Set(this.chain);
+		return this.struct();
+	}
+}
