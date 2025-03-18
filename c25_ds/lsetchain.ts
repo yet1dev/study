@@ -191,5 +191,21 @@ export class LSetMap<T> extends LSet3_Complex<T> implements LSetChain<T> {
 		}
 		return this.struct();
 	}
+//==============================================================
+	public val(prop:string, uaib:number = 0b0110): any[] {
+		return [...this.pick(prop,null,uaib)].map(x => x[prop]);  // spread sets keep order
+	}
+	public obj(prop:string, val:any, uaib:number = 0b0011): T {
+		return this.pick(prop, val, uaib).values().next().value ?? null as T;
+	}
+	public get(prop:string, val:any, uaib:number = 0b0011): Set<T> {
+		return this.pick(prop, val, uaib);
+	}
+	public qnt(prop:string, val:any, uaib:number = 0b0011): number {
+		return this.pick(prop,val,uaib).size;
+	}
+	public has(prop:string, val:any, uaib:number = 0b0011): boolean{
+		return this.pick(prop,val,uaib).size != 0;
+	}
 }
 
