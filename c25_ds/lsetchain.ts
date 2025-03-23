@@ -49,9 +49,10 @@ abstract class LSet0_Base<T> {
 	protected handler = {
 		set(obj: any, prop: string, val: any, proxy:any) {
 			let old = obj[prop];             // store old value
-			obj.repo.drop(proxy, prop, old); // del obj of old index[prop,val]
-			obj.repo.save(proxy, prop, val); // add obj in new index[prop,val]
-
+			if (obj.repo != null && obj.repo.list.has(proxy)) {
+				obj.repo.drop(proxy, prop, old); // del obj of old index[prop,val]
+				obj.repo.save(proxy, prop, val); // add obj in new index[prop,val]
+			}
 			obj[prop] = val; // update property value
 			return true;
 		},
@@ -154,6 +155,7 @@ abstract class LSet3_Complex<T> extends LSet2_Utils<T> {
 	
 	public del(prop:string, val:any, uaib:number = 0b0011): LSetChain<T> {
 		for (let obj of this.pick(prop, val, uaib)) { // pick objects
+			obj.repo = null                             // clear repository
 			this.list.delete(obj);                      // remove from list
 			this.chain.delete(obj);                     // remove from chain
 			for (let prop in obj) {
