@@ -17,27 +17,29 @@ def handleType(args, t, lenArgs="*", lenItem="*"):
 
 #==============================================================
 class Regex: pass
-
+#==============================================================
 class RChar(Regex):
-  def __init__(self, val1):
-    self.val1 = handleType(val1, str, len(val1)==1)
+  def __init__(self, args*):
+    self.args = handleType(args, str, 1, 1)
 
-class Regex1(Regex):
-  def __init__(self, val1):
-    self.val1 = istype(val1, Regex)
-
-class Regex2(Regex):
-  def __init__(self, val1, val2):
-    self.val1 = istype(val1, Regex)
-    self.val2 = istype(val2, Regex)
+class RStar(Regex):
+  def __init__(self, args*):
+    self.args = handleType(args, Regex, 1)
 
 #==============================================================
-#                       LOGICAL  OPERATORS
-#==============================================================
-class RStar(Regex1): pass
+class ROr(Regex):
+  def __init__(self, args*):
+    self.args = handleType(args, Regex, 2)
 
-class ROr(Regex2): pass
-class RAnd(Regex2): pass
-class RConcat(Regex2): pass
-class RRange(Regex0): pass
+class RAnd(Regex):
+  def __init__(self, args*):
+    self.args = handleType(args, Regex, 2)
+
+class RConcat(Regex):
+  def __init__(self, args*):
+    self.args = handleType(args, Regex, 2)
+
+class RRange(Regex):
+  def __init__(self, args*):
+    self.args = handleType(args, Regex, 2)
 
