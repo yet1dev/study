@@ -84,8 +84,19 @@ class RChar(Regex):
 
 #==============================================================
 class RStar(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, Regex, 1)
+  def __init__(self, R1):
+    M1 = R1.NFA
+    self.R1 = Type(Regex).get(R1)
+    self.regex = f'({R1.regex})*'
+
+    NFA = MachineNFA(StateNFA(), StateNFA())
+    NFA.load(M1.adj)
+
+    NFA.fst.link(MVoid(), NFA.end)
+    NFA.fst.link(MVoid(), M1.fst)
+    M1.end.link(MVoid(), M1.fst)
+    M1.end.link(MVoid(), NFA.end)
+    self.NFA = NFA
 
 #==============================================================
 class ROr(Regex):
