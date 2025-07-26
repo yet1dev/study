@@ -33,6 +33,19 @@ class MVoid(str):    # epsilon/void need be a char
   def __len__(self):
     return 1
 #==============================================================
+class StateNFA:
+  def __init__(self):
+    self.links = defaultdict(set)
+
+  def __repr__(self):
+    return f'<{id(self):x}>'
+
+  def link(self, char, state):
+    char  = Type(str,1).get(char)
+    state = Type(StateNFA).get(state)
+    self.links[char].add(state)
+
+#==============================================================
 #==============================================================
 class RChar(Regex):
   def __init__(self, args*):
