@@ -1,19 +1,27 @@
 #==============================================================
 #                       REGEX LIBRARY
 #==============================================================
-def handleType(args, t, lenArgs="*", lenItem="*"):
-  error = f"Expect {t.__name__}[{lenItem}], but receive"
+from collections import defaultdict
 
-  if not isinstance(args, list):
-    raise TypeError(f"{error} {type(args).__name__}")
-  if not all(isinstance(item, t) for item in args):
-    raise TypeError(f"{error} some item not is {t}")
-  if (lenArgs != "*") and len(args) != lenArgs:
-    raise TypeError(f"{error} {len(args)} elements")
-  if (lenItem != "*") and not all(len(item) == lenItem for item in args):
-    raise TypeError(f"{error} a item with size different of {lenItem}")
+class Type:
+  def __init__(self, *types):
+    self.types = types
 
-  return args
+  def get(self, val):
+    lvl = 0
+    buf = [val]
+    types = list(self.types[::-1])
+
+    while len(types) > 0:
+      t = types.pop()
+      if isinstance(t, int) and not all(t==len(x) for x in buf):
+        raise TypeError(f"[LVL {lvl}] >> Some element not have {t} itens")
+      if not isinstance(t, int) and not all(isinstance(x, t) for x in buf):
+        raise TypeError(f"[LVL {lvl}] >> Receive a not {t}")
+      if len(types) > 0 and not isinstance(types[-1], int):
+        buf  = [x for A in buf for x in A]
+        lvl += 1
+    return val
 
 #==============================================================
 class Regex: pass
