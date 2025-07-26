@@ -46,6 +46,32 @@ class StateNFA:
     self.links[char].add(state)
 
 #==============================================================
+class MachineNFA:
+  def __init__(self, fst, end):
+    self.fst = Type(StateNFA).get(fst)
+    self.end = Type(StateNFA).get(end)
+    self.adj = [fst, end]
+
+  def load(self, states):
+    filtered = [s for s in states if s not in (self.fst, self.end)]
+    self.adj = [self.fst] + filtered + [self.end]
+
+  def __repr__(self):
+    name_map = {}
+    for i, state in enumerate(self.adj):
+        name_map[state] = f'qx' if (state is self.end) else f'q{i}'
+
+    lines = []
+    for state in self.adj:
+        name = name_map[state]
+        trans = []
+        for char, targets in state.links.items():
+            for t in targets:
+                trans.append(f'{char}/{name_map[t]}')
+        trans_str = ', '.join(trans) if trans else '∅'
+        lines.append(f'  {name}: {trans_str}')
+    return '\n'.join(lines)
+
 #==============================================================
 class RChar(Regex):
   def __init__(self, args*):
