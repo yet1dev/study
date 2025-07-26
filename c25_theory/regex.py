@@ -25,6 +25,14 @@ class Type:
 
 #==============================================================
 class Regex: pass
+
+class MVoid(str):    # epsilon/void need be a char
+  def __new__(cls):
+    return str.__new__(cls, 'ε')
+
+  def __len__(self):
+    return 1
+#==============================================================
 #==============================================================
 class RChar(Regex):
   def __init__(self, args*):
