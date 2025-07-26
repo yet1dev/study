@@ -74,9 +74,15 @@ class MachineNFA:
 
 #==============================================================
 class RChar(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, str, 1, 1)
+  def __init__(self, char):
+    self.R1 = Type(str, 1).get(char)
+    self.regex = f'{char}'
 
+    NFA = MachineNFA(StateNFA(), StateNFA())
+    NFA.fst.link(char, NFA.end)
+    self.NFA = NFA
+
+#==============================================================
 class RStar(Regex):
   def __init__(self, args*):
     self.args = handleType(args, Regex, 1)
