@@ -100,12 +100,20 @@ class RStar(Regex):
 
 #==============================================================
 class ROr(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, Regex, 2)
+  def __init__(self, R1, R2):
+    M1, M2 = R1.NFA, R2.NFA
+    self.R1 = Type(Regex).get(R1)
+    self.R2 = Type(Regex).get(R2)
+    self.regex = f'({R1.regex}|{R2.regex})'
 
-class RAnd(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, Regex, 2)
+    NFA = MachineNFA(StateNFA(), StateNFA())
+    NFA.load(M1.adj + M2.adj)
+
+    NFA.fst.link(MVoid(), M1.fst)
+    NFA.fst.link(MVoid(), M2.fst)
+    M1.end.link(MVoid(), NFA.end)
+    M2.end.link(MVoid(), NFA.end)
+    self.NFA = NFA
 
 class RConcat(Regex):
   def __init__(self, args*):
