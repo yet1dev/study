@@ -17,3 +17,11 @@ test if a chain is accept by a especific regex expression.
 - [ ] **Matrix DFA Convertion**
 - [ ] **Test if String is accepted**
 
+
+**Some Coding Tests**
+```
+>>> from regex import *
+>>> RChar('a').NFA
+>>> RStar(RChar('a'), RChar('b')).NFA
+>>> ROr(RChar('a'), RChar('b')).regex
+```
