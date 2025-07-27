@@ -3,6 +3,15 @@
 #==============================================================
 from collections import defaultdict
 
+class PrettyDefaultDict(defaultdict):
+  def __repr__(self):
+    lines = []
+    for key, values in self.items():
+       values_repr = ', '.join(str(v) for v in values)
+       lines.append(f"  {repr(key)} → {{ {values_repr} }}")
+    return "{\n" + '\n'.join(lines) + "\n}"
+
+#==============================================================
 class Type:
   def __init__(self, *types):
     self.types = types
@@ -24,7 +33,9 @@ class Type:
     return val
 
 #==============================================================
-class Regex: pass
+class Regex:
+  def __repr__(self):
+    return self.regex
 
 class MVoid(str):    # epsilon/void need be a char
   def __new__(cls):
@@ -35,10 +46,13 @@ class MVoid(str):    # epsilon/void need be a char
 #==============================================================
 class StateNFA:
   def __init__(self):
-    self.links = defaultdict(set)
+    self.links = PrettyDefaultDict(set)
 
   def __repr__(self):
-    return f'<{id(self):x}>'
+    return f'q{self.NFA.all.index(self)}' + '*'*(self is self.NFA.end)
+
+  def setMachine(self, machine):
+    self.NFA = Type(MachineNFA).get(machine)
 
   def link(self, char, state):
     char  = Type(str,1).get(char)
@@ -50,26 +64,24 @@ class MachineNFA:
   def __init__(self, fst, end):
     self.fst = Type(StateNFA).get(fst)
     self.end = Type(StateNFA).get(end)
-    self.adj = [fst, end]
+    self.all = [fst, end]
 
   def load(self, states):
     filtered = [s for s in states if s not in (self.fst, self.end)]
-    self.adj = [self.fst] + filtered + [self.end]
+    self.all = [self.fst] + filtered + [self.end]
+
+    for state in self.all:
+        state.setMachine(self)
 
   def __repr__(self):
-    name_map = {}
-    for i, state in enumerate(self.adj):
-        name_map[state] = f'qx' if (state is self.end) else f'q{i}'
-
     lines = []
-    for state in self.adj:
-        name = name_map[state]
-        trans = []
-        for char, targets in state.links.items():
-            for t in targets:
-                trans.append(f'{char}/{name_map[t]}')
-        trans_str = ', '.join(trans) if trans else '∅'
-        lines.append(f'  {name}: {trans_str}')
+    for state in self.all:
+      trans = []
+      for char, targets in state.links.items():
+        for t in targets:
+          trans.append(f'{char}/{t}')
+      trans_str = ', '.join(trans) if trans else '∅'
+      lines.append(f'  {state}: {trans_str}')
     return '\n'.join(lines)
 
 #==============================================================
@@ -90,7 +102,7 @@ class RStar(Regex):
     self.regex = f'({R1.regex})*'
 
     NFA = MachineNFA(StateNFA(), StateNFA())
-    NFA.load(M1.adj)
+    NFA.load(M1.all)
 
     NFA.fst.link(MVoid(), NFA.end)
     NFA.fst.link(MVoid(), M1.fst)
@@ -107,7 +119,7 @@ class ROr(Regex):
     self.regex = f'({R1.regex}|{R2.regex})'
 
     NFA = MachineNFA(StateNFA(), StateNFA())
-    NFA.load(M1.adj + M2.adj)
+    NFA.load(M1.all + M2.all)
 
     NFA.fst.link(MVoid(), M1.fst)
     NFA.fst.link(MVoid(), M2.fst)
@@ -123,7 +135,7 @@ class RConcat(Regex):
     self.regex = f'{R1.regex}{R2.regex}'
 
     self.NFA = MachineNFA(M1.fst, M2.end)
-    self.NFA.load(M1.adj + M2.adj)
+    self.NFA.load(M1.all + M2.all)
 
     M1.end.link(MVoid(), M2.fst)
 
