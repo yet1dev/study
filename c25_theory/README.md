@@ -7,9 +7,13 @@ test if a chain is accept by a especific regex expression.
 **Download:** [link](https://yet1dev.com/study/c25_theory/regex.py)
 ```
 >>> from regex import *
->>> RChar('a').NFA
->>> RStar(RChar('a'), RChar('b')).NFA
->>> ROr(RChar('a'), RChar('b')).regex
+>>> regex = RConcat(RChar('a'), RStar(ROr(RChar('a'), RChar('b'))))
+>>> regex.regex
+>>> regex.NFA
+>>> regex.NFA.fst
+>>> regex.NFA.end
+>>> regex.NFA.all
+>>> regex.NFA.end.links
 ```
 #### Work Progress
 - [x] **Represent:** ROr
