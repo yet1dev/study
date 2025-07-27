@@ -129,6 +129,8 @@ class RConcat(Regex):
 
 #==============================================================
 class RRange(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, Regex, 2)
+  def __init__(self, R1, R2):
+    self.R1 = Type(str, 1).get(R1)
+    self.R2 = Type(str, 1).get(R2)
+    self.regex = f'[{R1}-{R2}]'
 
