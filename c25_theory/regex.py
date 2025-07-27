@@ -116,9 +116,18 @@ class ROr(Regex):
     self.NFA = NFA
 
 class RConcat(Regex):
-  def __init__(self, args*):
-    self.args = handleType(args, Regex, 2)
+  def __init__(self, R1, R2):
+    M1, M2 = R1.NFA, R2.NFA
+    self.R1 = R1
+    self.R2 = R2
+    self.regex = f'{R1.regex}{R2.regex}'
 
+    self.NFA = MachineNFA(M1.fst, M2.end)
+    self.NFA.load(M1.adj + M2.adj)
+
+    M1.end.link(MVoid(), M2.fst)
+
+#==============================================================
 class RRange(Regex):
   def __init__(self, args*):
     self.args = handleType(args, Regex, 2)
